@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Contact Capture Tool</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <script type=text/javascript
+          src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type=text/javascript>
+          var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+        </script>   
+        <style>
+        #block_container {
+                    display: flex;
+/*                    justify-content: center;*/
+                }  
+       #osm,#radio1,#radio2,#r1,#r2,#Add,#Alert{
+                  display: none;
+                }
+            
+            
+        </style>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body >
+<script type=text/javascript>
+   var email;
+    var url,city,country,name,org,add,pos,tel,fax,mob;
+  $(function() {
+    $("#submitBtn").click(function() {
+         $.ajax({
+            type: "GET",
+            url: "http://10.17.52.32:5000/echo",
+            contentType: "application/json; charset=utf-8",
+            data: { echoValue: $('textarea[name="echoText"]').val() },
+            success: function(data) {
+             if ($.trim($('#echoText').val()).length > 1){
+                $('#panel1').show();
+                $('#Alert').hide();
+				$('#echo').text("Contact Info"); 
+                $('#echo1').text("Email :  ");
+                $('#echo2').text("URL :  ");
+                $('#echo3').text("City :  ");
+                $('#echo4').text("Country :  ");
+                $('#echo3a').text("City :  ");
+                $('#echo4a').text("Country :  ");
+                $('#echo5').text("Name :  ");
+                $('#echo6').text("Organisation :  ");
+                $('#echo7').text("Address :  ");
+                $('#echo7a').text("Address :  ");
+                $('#echo8').text("Position :  ");
+                $('#echo9').text("Tel :  ");
+                $('#echo10').text("Fax :  ");
+                $('#echo11').text("Mob :  ");
+                $('#echo12').text("TEL :  ");
+                $('#echo13').text("FAX :  ");
+                $('#echo14').text("MOB :  ");
+                $('#echo15').text("Address 1 :  ");
+                $('#echo16').text("Zip Code :  ");
+                $('#echo17').text("Country Code :  ");
+                $('#echo18').text("Address 1 :  ");
+                $('#echo19').text("Zip Code :  ");
+                $('#echo20').text("Country Code :  ");
+                $('#echo21').text("GOOGLE :  ");
+                $('#echo22').text("OSM :  ");
+                $('#echo23').text("County : ")
+                $('#echo24').text("State  : ")
+                $('#echo23a').text("County : ")
+                $('#echo24a').text("State  : ")
+                $('#echoResult').text(data.Email);
+                $('#echoResult1').text(data.Www);
+                $('#echoResult2').text(data.City);
+                $('#echoResult2a').text(data.City);
+                $('#echoResult3').text(data.Country);
+                $('#echoResult3a').text(data.Country);
+                $('#echoResult4').text(data.Name);
+                $('#echoResult5').text(data.Organization);
+                $('#echoResult6').text(data.FullAddress);
+                $('#echoResult6a').text(data.FullAddress);
+                $('#echoResult7').text(data.Role);
+                $('#echoResult8').text(data.Tel1);
+                $('#echoResult9').text(data.Fax1);
+                $('#echoResult10').text(data.Mob1);
+                $('#echoResult11').text(data.Phone); 
+                $('#echoResult12').text(data.Fax);
+                $('#echoResult13').text(data.Mobile);
+                $('#echoResult15').text(data.Address1Google); 
+                $('#echoResult16').text(data.ZipCodeGoogle);
+                $('#echoResult17').text(data.CountryCodeGoogle);
+                $('#echoResult18').text(data.Address1Osm); 
+                $('#echoResult19').text(data.ZipCodeOsm);
+                $('#echoResult20').text(data.CountryCodeOsm);
+                $('#echoResult21').text(data.CityGoogle);
+                $('#echoResult22').text(data.CountryGoogle); 
+                $('#echoResult23').text(data.CityOsm);
+                $('#echoResult24').text(data.CountryOsm);
+                $('#echoResult25').text(data.CountyGoogle);
+                $('#echoResult26').text(data.StateGoogle);
+                $('#echoResult27').text(data.StateOsm);
+                $('#echoResult28').text(data.CountyOsm);
+                $('#echoResult29').text(data.Empty);
+                $('#Add').show();
+                $('#radio1').show();
+                $('#radio2').show();
+                $('#r1').show();
+                $('#r2').show();
+              }
+                else{
+//                   alert("Try with Some Other Data");
+                     $('#panel1').hide();
+                     $('#Alert').show();
+                }
+            
+//                style= "background-color: #D5D9D9"
+               /* email =data.Email;
+                url=data.URL;
+                city=data.City; 
+                country=data.Country; name=data.Name;org=data.Org;add=data.Address;pos=data.Pos;tel=data.Tel;fax=data.Fax;mob=data.Mob;
+                $("#echo1").text(''); $('#echo2').text('');$('#echo3').text('');$('#echo4').text('');$('#echo5').text('');$('#echo6').text('');$('#echo7').text('');
+                $('#echo8').text('');$('#echo9').text('');$('#echo10').text('');$('#echo11').text('');
+                if (email != ''){
+                     $('#echo1').text("Email : ");
+                }if (url != ''){
+                    $('#echo2').text("URL : ");
+                }if (city != ''){
+                    $('#echo3').text("City : ");
+                } if (country != ''){
+                     $('#echo4').text("Country : ");
+                }if(name != ''){
+                     $('#echo5').text("Name : ");
+                }if (org !=''){
+                    $('#echo6').text("Organisation : ");
+                }if (add !=''){
+                   $('#echo7').text("Address : ");
+                }if (pos !=''){
+                    $('#echo8').text("Position : ");
+                }if (tel !=''){
+                    $('#echo9').text("Tel : ");
+                }if(fax !=''){
+                     $('#echo10').text("Fax : ");
+                }if(mob !=''){
+                     $('#echo11').text("Mob : ");       
+                }         */
+//                alert (data.Email);
+//                if (data.Email) != ""
+//                   $('#echo1').text("Email : "); 
+                
+            }
+        });     
+    });
+  });
+</script>
+
+<div class="col-lg-6 col-sm-12 left">
+    <table>
+    <p><strong>Test Contact Capture Tool</strong> (Paste the content)</p><br />
+<textarea  name="echoText" rows="20" cols="100" id="echoText" class="form-control col-xs-12 " > </textarea><br />
+
+<br />
+        </table>
+</div>
+<div class="col-lg-6 col-sm-12 right" >
+    <p><strong> RESULT </strong></p><br />
+    <div class="panel panel-primary"  >
+        <div class="panel-body" style="height: 410px;overflow-y: scroll; ">
+        <p id="Alert" style="color:red;text-align: center;"><b>  TRY WITH SOME CONTENT  </b></p>
+        <div id="panel1">
+<!--<textarea name="echoText11" rows="20" cols="100" id="echoText11" class="form-control col-xs-12 "> <div id='echoResult1'></div> </textarea>-->
+<div id="block_container"><strong><div id='echo1'></div></strong><div id='echoResult'></div> </div>
+<div id="block_container"><strong><div id='echo2'></div></strong><div id='echoResult1'></div></div>
+            
+<div id="block_container"><strong><div id='echo5'></div></strong><div id='echoResult4'></div></div>
+<div id="block_container"><strong><div id='echo6'></div></strong><div id='echoResult5'></div></div>
+
+<div id="block_container"><strong><div id='echo8'></div></strong><div id='echoResult7'></div></div>
+<!--
+<div id="block_container"><strong><div id='echo9'></div></strong><div id='echoResult8'></div></div>
+<div id="block_container"><strong><div id='echo10'></div></strong><div id='echoResult9'></div></div>
+<div id="block_container"><strong><div id='echo11'></div></strong><div id='echoResult10'></div></div><br />
+-->
+<div id="block_container"><strong><div id='echo12'></div></strong><div id='echoResult11'></div></div>
+<div id="block_container"><strong><div id='echo13'></div></strong><div id='echoResult12'></div></div>
+<div id="block_container"><strong><div id='echo14'></div></strong><div id='echoResult13'></div></div>
+<!--<div class="col-lg-6 col-sm-6 left">-->
+<!--    <p><b>Using Google</b></p>-->
+<!--    <b><div id='echo21'></div></b>-->
+<!--<div id="block_container"><strong><div id='echo15'></div></strong><div id='echoResult15'></div></div>-->
+<!--<div id="block_container"><strong><div id='echo16'></div></strong><div id='echoResult16'></div></div>-->
+<!--<div id="block_container"><strong><div id='echo17'></div></strong><div id='echoResult17'></div></div>-->
+<!--            </div>-->
+<!--<div class="col-lg-3 col-sm-6 right">-->
+<!--    <b><div id='echo22'></div></b>-->
+<!--    <p><b>Using OSM</b></p>-->
+<!--<div id="block_container"><strong><div id='echo18'></div></strong><div id='echoResult18'></div></div>-->
+<!--<div id="block_container"><strong><div id='echo19'></div></strong><div id='echoResult19'></div></div>-->
+<!--<div id="block_container"><strong><div id='echo20'></div></strong><div id='echoResult20'></div></div>-->
+<!--            </div>-->
+<div class="form-top">
+<div class="form-group">
+    <div id="block_container">
+    <p id="Add"><b><i>Address Validation </i> :  </b></p>
+    <input type="radio" onchange="document.getElementById('google').style.display='block';document.getElementById('osm').style.display='none'" name="acc-type" value="radio1" id="radio1" checked="checked"><p id="r1"> 
+        <b> Google</b></p>
+    <input type="radio" onchange="document.getElementById('osm').style.display='block';document.getElementById('google').style.display='none'" name="acc-type" value="radio2" id="radio2"> <p id="r2"><b> OSM</b></p>
+    </div>
+    </div>
+    </div>
+<div id="google">
+<div id="block_container"><strong><div id='echo7'></div></strong><div id='echoResult6'></div></div>
+<div id="block_container"><strong><div id='echo15'></div></strong><div id='echoResult15'></div></div>
+<div id="block_container"><strong><div id='echo16'></div></strong><div id='echoResult16'></div></div>
+<div id="block_container"><strong><div id='echo17'></div></strong><div id='echoResult17'></div></div>
+<div id="block_container"><strong><div id='echo3'></div></strong><div id='echoResult21'></div></div>
+<div id="block_container"><strong><div id='echo4'></div></strong><div id='echoResult22'></div></div>
+<div id="block_container"><strong><div id='echo23'></div></strong><div id='echoResult25'></div></div>
+<div id="block_container"><strong><div id='echo24'></div></strong><div id='echoResult26'></div></div>
+</div>
+<div id="osm">  
+<div id="block_container"><strong><div id='echo7a'></div></strong><div id='echoResult6a'></div></div>
+<div id="block_container"><strong><div id='echo18'></div></strong><div id='echoResult18'></div></div>
+<div id="block_container"><strong><div id='echo19'></div></strong><div id='echoResult19'></div></div>
+<div id="block_container"><strong><div id='echo20'></div></strong><div id='echoResult20'></div></div>
+<div id="block_container"><strong><div id='echo3a'></div></strong><div id='echoResult23'></div></div>
+<div id="block_container"><strong><div id='echo4a'></div></strong><div id='echoResult24'></div></div>
+<div id="block_container"><strong><div id='echo23a'></div></strong><div id='echoResult28'></div></div>
+<div id="block_container"><strong><div id='echo24a'></div></strong><div id='echoResult27'></div></div>
+    <div id='echoResult29'></div>
+</div>     
+            </div>
+        </div>
+    </div>
+</div>
+        
+        <button type='button' id='submitBtn' name='submitBtn' class="btn btn-primary center-block">Process </button><p></p><br />
+
+</body>
+</html>
